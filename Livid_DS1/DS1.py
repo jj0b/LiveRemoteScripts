@@ -263,9 +263,11 @@ class DS1(ControlSurface):
 		self._encoder_button_matrix = ButtonMatrixElement(name = 'EncoderButtonMatrix', rows = [self._encoder_button])
 		self._grid_matrix = ButtonMatrixElement(name = 'GridMatrix', rows = self._grid)
 		self._selected_parameter_controls = ButtonMatrixElement(name = 'SelectedParameterControls', rows = [self._dummy + self._encoder[:1] + self._encoder[2:]])
+		
+		for index in range(8):
++			self._button[index].set_on_off_values('Mixer.MuteOn', 'Mixer.MuteOff')
++			self._button[index+8].set_on_off_values('Mixer.SoloOn', 'Mixer.SoloOff')
 
-
-	
 
 	def _define_sysex(self):
 		self._livid_settings = LividSettings(model = 16, control_surface = self)
